@@ -1,24 +1,33 @@
 <?php 
 
-namespace App\Controllers;
+namespace App\Controllers\Dashboard;
+
 use App\Models\PeliculaModel;
+use App\Controllers\BaseController;
 
 class Pelicula extends BaseController
 {
+
+
+    public function test($id)
+    {
+        echo 'test'.$id;
+    }
 
     public function index()
     {   
 
         $peliculaModel=new PeliculaModel();
 
-        echo view('pelicula/index',[
+        echo view('dashboard/pelicula/index',[
             'peliculas'=> $peliculaModel->findAll(),
         ]);
     }    
 
     public function new()
     {
-      echo view('pelicula/new',[
+
+      echo view('dashboard/pelicula/new',[
         'pelicula' =>[
         'titulo' =>'',
         'descripcion'=>''
@@ -30,7 +39,7 @@ class Pelicula extends BaseController
 
         $peliculaModel = new PeliculaModel();
 
-        echo view('pelicula/show',[
+        echo view('dashboard/pelicula/show',[
             'pelicula' =>$peliculaModel->find($id)
         ]);
 
@@ -46,14 +55,14 @@ class Pelicula extends BaseController
             'descripcion'=>$this->request->getPost('descripcion')
         ]);
         
-        echo 'creado';
+        return redirect()->to('/dashboard/pelicula');
     }
 
     public function edit($id)
     {
         $peliculaModel= new PeliculaModel();
 
-        echo view('pelicula/edit',[
+        echo view('dashboard/pelicula/edit',[
             'pelicula' =>$peliculaModel->find($id)
         ]);
     }
@@ -68,7 +77,10 @@ class Pelicula extends BaseController
             'descripcion'=> $this->request->getPost('descripcion')
         ]);
 
-        echo 'update';
+        //return redirect()->back();
+        return redirect()->to('/dashboard/pelicula');
+        //return redirect()->to('/dashboard/test');
+        //return redirect()->route('pelicula.test');
 
     }
 
@@ -78,7 +90,7 @@ class Pelicula extends BaseController
         $peliculaModel = new PeliculaModel();
         $peliculaModel->delete($id);
 
-        echo "delete";
+        return redirect()->to('/dashboard/pelicula');
     }
 
 
