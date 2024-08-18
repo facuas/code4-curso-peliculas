@@ -16,3 +16,4 @@ $routes->get('pelicula/new','Pelicula::create');
 $routes->get('pelicula/edit/(:num)','Pelicula::edit/$1');*/
 
 $routes->presenter('pelicula');
+$routes->presenter('categoria');
