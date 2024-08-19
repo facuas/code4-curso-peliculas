@@ -54,8 +54,10 @@ class Pelicula extends BaseController
             'titulo'=>$this->request->getPost('titulo'),
             'descripcion'=>$this->request->getPost('descripcion')
         ]);
+
+
         
-        return redirect()->to('/dashboard/pelicula');
+        return redirect()->to('/dashboard/pelicula')->with('mensaje','Registro creado de manera exitosa');
     }
 
     public function edit($id)
