@@ -6,6 +6,8 @@
     <title>Actualizar Pelicula</title>
 </head>
 <body>
+
+<?= view('partials/_form-error') ?>
     <form action="/dashboard/pelicula/update/<?= $pelicula['id']  ?>" method="post">
         <?= view('dashboard/pelicula/_form',['op'=>'Actualizar']) ?>
     </form>
