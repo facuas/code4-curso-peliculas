@@ -24,6 +24,12 @@ $routes->set404Override();
 
  $routes->get('/', 'Home::index');
 
+  
+$routes->group('api',[ 'namespace'=>'App\Controllers\Api' ], function ($routes) {
+    $routes->resource('pelicula');
+    $routes->resource('categoria');
+});
+
 $routes->group('dashboard', function ($routes) {
     $routes->presenter('pelicula',['controller' => 'Dashboard\Pelicula']);
     $routes->get('usuario/crear', '\App\Controllers\Web\Usuario::crear_usuario');
